@@ -4,12 +4,12 @@ import com.example.bean.Employee;
 import com.example.result.Msg;
 import com.example.service.EmployeeService;
 import com.example.util.UUIDUtil;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 
 /**
  * @PROJECT_NAME: ssm-crud
@@ -25,9 +25,11 @@ public class EmployeeController {
 
     @RequestMapping(path = "/emp", method = RequestMethod.POST)
     public Msg addEmp(@Valid Employee employee) {
-        employee.setEmpId(UUIDUtil.uuid2());
+        System.out.println("----");
+        employee.setId(UUIDUtil.uuid2());
         employee.setIp(UUIDUtil.getIP());
-        employee.setDId("1");
+        employee.setDepId("1");
+        employeeService.getData();
         employeeService.addEmp(employee);
         return Msg.success();
     }

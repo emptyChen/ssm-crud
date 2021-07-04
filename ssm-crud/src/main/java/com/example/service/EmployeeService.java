@@ -18,7 +18,12 @@ public class EmployeeService {
     private EmployeeMapper employeeMapper;
 
     public void addEmp(Employee employee) {
+        System.out.println("2222");
         employeeMapper.addEmp(employee);
+    }
+
+    public void getData() {
+        System.out.println("3333");
     }
 
 }
